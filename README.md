@@ -1,11 +1,49 @@
 # HS Codes — Validation, Reference & Bangladesh Customs Duty Utilities
 
-Open-source utilities for logistics, shipping and customs workflows. No external
-dependencies; ships only public WTO HS nomenclature data.
+[![CI](https://github.com/AngrY00/open-logistics-tools/actions/workflows/ci.yml/badge.svg)](https://github.com/AngrY00/open-logistics-tools/actions/workflows/ci.yml)
+
+This repository contains the **`hs-codes`** npm package — open-source utilities
+for logistics, shipping and customs workflows. No external dependencies; ships
+only public WTO HS nomenclature data.
 
 > **Source data contract**: This package bundles no live tariff rates. Supply the
 > official CD/SD/VAT/AIT/RD/AT rates for your HS codes from
 > [bangladeshcustoms.gov.bd](https://bangladeshcustoms.gov.bd) before filing.
+
+---
+
+## Quick Start
+
+```bash
+npm install hs-codes
+```
+
+**Validate an HS code:**
+
+```js
+const { validateHsCode } = require('hs-codes');
+
+const result = validateHsCode('0901.21.00');
+// → { valid: true, normalized: '09012100', formatted: '0901.21.00',
+//     chapter: '09', heading: '0901',
+//     chapterTitle: 'Coffee, tea, mate and spices', errors: [] }
+
+console.log(result.valid, result.formatted);   // true '0901.21.00'
+```
+
+**Calculate Bangladesh customs duty:**
+
+```js
+const { bdDuty } = require('hs-codes');
+
+const duty = bdDuty(1000000, 25, 10, 15, 5, 5, 5);
+//            assessableValue, CD, SD, VAT, AIT, RD, AT  (all rates in %)
+
+console.log(duty.totalDuty);      // 766000
+console.log(duty.totalPayable);   // 1766000
+```
+
+Requires Node ≥ 18. See [Module overview](#module-overview) for the full API.
 
 ---
 

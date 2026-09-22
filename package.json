@@ -1,0 +1,28 @@
+{
+  "name": "hs-codes",
+  "version": "1.0.0",
+  "description": "HS code validation, formatting, and Bangladesh customs duty calculator utilities",
+  "license": "MIT",
+  "homepage": "https://github.com/AngrY00/open-logistics-tools#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AngrY00/open-logistics-tools.git"
+  },
+  "main": "src/index.js",
+  "scripts": {
+    "test": "node --test test/*.test.js"
+  },
+  "keywords": [
+    "hs-code",
+    "harmonized-system",
+    "customs",
+    "bangladesh",
+    "logistics",
+    "shipping",
+    "duty-calculator",
+    "bd-customs"
+  ],
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
